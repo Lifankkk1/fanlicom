@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="jquery-1.12.3.min.js"></script>
+    <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .navbar-header {
+            margin-left: -20px;
+        }
+
+        #dropdownMenu1 {
+            background-color: #f8f8f8;
+        }
+
+        #banner1 {
+            height: 500px;
+            width: 800px;
+        }
+
+        .table tr td a {
+            text-decoration: none;
+        }
+
+        #search1 a {
+            text-decoration: none;
+        }
+
+        #banner_left {
+            width: 200px;
+            height: 620px;
+            float: left;
+            border: 1px solid;
+            border-color: #ff0000;
+            margin-left: -16px;
+            background-color: #ff6a00;
+        }
+
+        #banner {
+            width: 950px;
+            height: 40px;
+            float: left;
+            border: 0px solid;
+            border-color: #808080;
+        }
+
+        .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+            color: #fff;
+            background-color: #f8810f;
+        }
+
+        .breadcrumb > li > a {
+            font-size: smaller;
+            color: #fff;
+        }
+
+        .breadcrumb {
+            margin-top: -20px;
+            background-color: #ff6a00;
+        }
+
+        .box {
+            height: 120px;
+            width: 120px;
+            background: #ff6a00;
+            float: left;
+            margin-left: 8px;
+            margin-top: 20px;
+        }
+
+        .box1 {
+            float: left;
+            height: 580px;
+            border: 2px solid;
+            border-color: #ff6a00;
+            width: 665px;
+            padding: 0px;
+            display: none;
+            margin-left: -2px;
+        }
+
+        .box2 {
+            float: left;
+            height: 580px;
+            width: 665px;
+            padding: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        function Init() {
+            $("#mytab li").click(function (e) {
+                e.preventDefault();
+                $(this).tab("show");
+            })
+            $("#mytab1 li").mouseover(function (e) {
+                e.preventDefault();
+                $(this).tab("show");
+            })
+            $("#mytab1 li").mouseout(function () {
+                $(this).removeClass("active");
+            })
+            //$(".breadcrumb").mouseover(function () {
+            //    var i = $(".breadcrumb").length;
+            //    if (document.getElementsByClassName("box1")[0].style.display == "none") {
+            //        document.getElementsByClassName("box1")[0].style.display = "block";
+            //    } else {
+            //        document.getElementsByClassName("box1")[0].style.display = "none";
+            //    }
+            //})
+            //ShowDivForDisplay();
+        }
+        function mouseout() {
+            //document.getElementsByClassName("box1")[0].style.display = "none";
+            //document.getElementsByClassName("box1")[1].style.display = "none";
+            //document.getElementsByClassName("box1")[2].style.display = "none";
+            var j = document.getElementsByClassName("box1").length;
+            for (var i = 0; i < j; i++) {
+                document.getElementsByClassName("box1")[i].style.display = "none";
+            }
+        }
+        //function mouseover0() {
+        //    document.getElementsByClassName("box1")[0].style.display = "block";
+        //    document.getElementsByClassName("box1")[1].style.display = "none";
+        //    document.getElementsByClassName("box1")[2].style.display = "none";
+        //}
+        //function mouseover1() {
+        //    document.getElementsByClassName("box1")[0].style.display = "none";
+        //    document.getElementsByClassName("box1")[1].style.display = "block";
+        //    document.getElementsByClassName("box1")[2].style.display = "none";
+        //}
+        //function mouseover2() {
+        //    document.getElementsByClassName("box1")[0].style.display = "none";
+        //    document.getElementsByClassName("box1")[1].style.display = "none";
+        //    document.getElementsByClassName("box1")[2].style.display = "block";
+        //}
+        function mouseover(e) {
+            var j = document.getElementsByClassName("box1").length;
+            for (var i = 0; i < j; i++) {
+                document.getElementsByClassName("box1")[i].style.display = "none";
+            }
+            //alert(e);
+            document.getElementsByClassName("box1")[e].style.display = "block";
+        }
+        //function ShowDivForDisplay() {
+        //    $(".breadcrumb").each(function () {
+        //        $(this).mouseover(function () {
+        //            if ($(".box1")[parseInt($(this).attr('data-gropup')) - 1].style.display != "none") {
+        //                $(".box1")[parseInt($(this).attr('data-gropup')) - 1].style.display = "none";
+        //            }
+        //            else {
+        //                $(".box1")[parseInt($(this).attr('data-gropup')) - 1].style.display = "block";
+        //            }
+        //        })
+        //        $(this).mouseleave(function () {
+        //            $(".box1")[parseInt($(this).attr('data-gropup')) - 1].style.display = "none";
+        //        })
+        //    })
+        //}
+    </script>
+</head>
+<body onload="Init();">
+    <nav class="nav navbar-default small" role="navigation">
+        <div class="nav navbar-header" style="margin-left:300px;">
+            <a class="navbar-text" href="#">亲,请登录</a>
+        </div>
+        <div class="nav navbar-header">
+            <a class="navbar-text" href="#">免费注册</a>
+        </div>
+        <div class="nav navbar-header">
+            <a class="navbar-text" href="#">手机逛淘宝</a>
+        </div>
+        <div class="dropdown pull-right">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                我的淘宝
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">已买到的宝贝</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">我的足迹</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown pull-right">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                购物车
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">已买到的宝贝</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">我的足迹</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown pull-right">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                收藏夹
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" href="#">收藏的宝贝</a>
+                </li>
+                <li role="presentation">
+                    <a role="menuitem" href="#">收藏的店铺</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown pull-right">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">
+                网站导航
+                <span class="caret"></span>
+            </button>
+            <ul id="banner1" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <table class="table" frame=void>
+                        <thead>
+                            <tr>
+                                <th style="font-size:large;color:#ff6a00;">主题市场</th>
+                                <th style="font-size:large;color:#a8d524;">特色市场</th>
+                                <th style="font-size:large;color:#c70b0b;">阿里app</th>
+                                <th style="font-size:large;color:#216ecc;">精彩推荐集</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><a href="#">女装</a> &nbsp;&nbsp;&nbsp;<a href="#">男装</a>&nbsp;&nbsp;&nbsp;<a href="#">内衣</a>&nbsp;&nbsp;&nbsp;<a href="#">鞋子</a></td>
+                            <td>iFashion&nbsp;&nbsp;&nbsp;爱逛街&nbsp;&nbsp;&nbsp;美妆秀</td>
+                            <td>淘宝&nbsp;&nbsp;&nbsp;天猫&nbsp;&nbsp;&nbsp;支付宝</td>
+                            <td>余额宝&nbsp;&nbsp;&nbsp;大牌捡宝</td>
+                        </tr>
+                        <tr>
+                            <td>箱包&nbsp;&nbsp;&nbsp;婴童&nbsp;&nbsp;&nbsp;家电&nbsp;&nbsp;&nbsp;数码</td>
+                            <td>全球购&nbsp;&nbsp;&nbsp;腔调&nbsp;&nbsp;&nbsp;淘女郎</td>
+                            <td>聚划算&nbsp;&nbsp;&nbsp;去啊&nbsp;&nbsp;&nbsp;旺信</td>
+                            <td>淘公仔&nbsp;&nbsp;&nbsp;浏览器</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="width:600px;text-align:center;margin-top:100px;">
+        <ul class="nav nav-tabs" id="mytab">
+            <li class="active"><a href="#">淘宝</a></li>
+            <li><a href="#">天猫</a></li>
+            <li><a href="#">店铺</a></li>
+        </ul>
+        <div class="input-group" style="width:600px;">
+            <input type="text" class="form-control" style="height:45px;" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" style="height:45px;">
+                    搜索
+                </button>
+            </span>
+        </div>
+    </div>
+    <a href="#" style="text-decoration:none;width:100px;float:right;margin-top:-42px;margin-right:570px;">高级<br />搜索</a>
+    <div class="container" style="text-align:left;width:600px;" id="search1">
+        <a href="#" style="font-size:small">新款连衣裙</a>
+        <a href="#" style="font-size:small">四件套</a>
+        <a href="#" style="font-size:small">潮流T恤</a>
+        <a href="#" style="font-size:small">时尚女鞋</a>
+        <a href="#" style="font-size:small">短裤</a>
+        <a href="#" style="font-size:small">耳机</a>
+        <a href="#" style="font-size:small">男士外套</a>
+        <a href="#" style="font-size:small">行车记录仪</a>
+        <a href="#" style="font-size:small">新款男鞋</a>
+        <a href="#" style="font-size:small">半身裙</a>
+        <a href="#" style="font-size:small">男士外套</a>
+    </div>
+    <div class="container" style="border:1px solid;border-color:#c70b0b;height:620px;">
+        <div class="container" id="banner_left">
+            <a href="#" style="height:40px;text-decoration:none;"><h4 style="color:#fff;">主题市场</h4></a>
+            <ol class="breadcrumb" style="margin-top:10px;" onmouseleave=mouseover(1);>
+                <li><a href="#">女装</a></li>
+                <li><a href="#">男装</a></li>
+                <li><a href="#">内衣</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="2" onmouseleave=mouseover(2);>
+                <li><a href="#">鞋靴</a></li>
+                <li><a href="#">箱包</a></li>
+                <li><a href="#">配件</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="3" onmouseleave=mouseover(3);>
+                <li><a href="#" style="margin-left:-5px;">童装玩具</a></li>
+                <li><a href="#">孕产</a></li>
+                <li><a href="#">用品</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="4" onmouseleave=mouseover(4);>
+                <li><a href="#">家电</a></li>
+                <li><a href="#">数码</a></li>
+                <li><a href="#">手机</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="5" onmouseleave=mouseover(5);>
+                <li><a href="#">美妆</a></li>
+                <li><a href="#">洗护</a></li>
+                <li><a href="#">保健品</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="6" onmouseleave=mouseover(6);>
+                <li><a href="#">珠宝</a></li>
+                <li><a href="#">眼镜</a></li>
+                <li><a href="#">手表</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="7" onmouseleave=mouseover(7);>
+                <li><a href="#">运动</a></li>
+                <li><a href="#">户外</a></li>
+                <li><a href="#">乐器</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="8">
+                <li><a href="#">游戏</a></li>
+                <li><a href="#">动漫</a></li>
+                <li><a href="#">影视</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="9">
+                <li><a href="#">美食</a></li>
+                <li><a href="#">生鲜</a></li>
+                <li><a href="#">零食</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="10">
+                <li><a href="#">鲜花</a></li>
+                <li><a href="#">宠物</a></li>
+                <li><a href="#">农资</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="11">
+                <li><a href="#">房产</a></li>
+                <li><a href="#">装修</a></li>
+                <li><a href="#">建材</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="12">
+                <li><a href="#">家具</a></li>
+                <li><a href="#">家饰</a></li>
+                <li><a href="#">家纺</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="13">
+                <li><a href="#">汽车</a></li>
+                <li><a href="#">二手车</a></li>
+                <li><a href="#">用品</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="14">
+                <li><a href="#">办公</a></li>
+                <li><a href="#">DIY</a></li>
+                <li><a href="#">五金电子</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="15">
+                <li><a href="#" style="margin-left:-5px;">百货</a></li>
+                <li><a href="#">收纳</a></li>
+                <li><a href="#">家庭保健</a></li>
+            </ol>
+            <ol class="breadcrumb" data-gropup="16">
+                <li><a href="#" style="margin-left:-5px;">学习</a></li>
+                <li><a href="#">卡券</a></li>
+                <li><a href="#">本地服务</a></li>
+            </ol>
+        </div>
+        <div class="container" id="banner">
+            <ul class="nav nav-pills nav-stacked" role="tablist" id="mytab1" style="text-align:center;">
+                <li role="presentation" style="float:left;"><a href="#">天猫</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">聚划算</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">天猫超市</a></li>
+                <hr style="height:20px;border:2px solid #e1d8d8;width:0px;float:left;margin-top:8px;">
+                <li role="presentation" style="float:left;"><a href="#">淘抢购</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">电器城</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">司法拍卖</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">中国质造</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">特色中国</a></li>
+                <hr style="height:20px;border:2px solid #e1d8d8;width:0px;float:left;margin-top:8px;">
+                <li role="presentation" style="float:left;"><a href="#">阿里旅行</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">智能生活</a></li>
+                <li role="presentation" style="float:left;"><a href="#" style="margin-top:-2px;">苏宁易购</a></li>
+            </ul>
+        </div>
+        <div class="box2" onmouseleave="mouseout();">
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装1</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装1</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装1</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装1</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装1</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div class="box1" style="float:left;height:580px;border:2px solid;border-color:#ff6a00;width:665px;padding:0px;">
+                <div class="container" style="height:580px;width:400px;float:left;background-color:#fff;margin-left:0px;padding:0px;">
+                    <h5 class="pull-left" style="margin-top:18px;margin-left:10px;">女装2</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">男装</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                    <h5 class="pull-left" style="margin-top: 18px; margin-left: 10px;">内衣</h5>
+                    <p class="pull-right" style="margin-top:18px;"><a style="font-size:small">更多></a></p>
+                    <hr style="width:400px;float:left;color:#808080;margin-top:-5px;margin-left:0px;" />
+                    <div class="container" style="height:145px;width:400px;float:left;margin-top:-15px;padding:0px;padding:0px;">
+                        <a href="#">韩版</a>
+                        <a href="#">春夏新品</a>
+                        <a href="#">潮品牌</a>
+                        <a href="#">90后潮流志</a>
+                        <a href="#">连衣裙</a>
+                        <a href="#">T恤</a>
+                        <a href="#">裤子</a>
+                        <a href="#">衬衫</a><br />
+                        <a href="#">半身裙</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">牛仔裤</a>
+                    </div>
+                </div>
+                <div class="container" style="height:580px;width:260px;float:left;background-color:#f8f8f8;margin-left:0px;padding:0px;">
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:40px;float:left;" />
+                    <h5 style="margin-left:0px;margin-top:30px;float:left;">猜你喜欢</h5>
+                    <hr style="width:60px;color:#808080;margin-top:37px;margin-left:0px;" /><br />
+                    <p style="margin-top:-30px;"><span style="font-size:smaller;color:#808080;">实时推荐你喜欢的宝贝</span></p><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div><br />
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
