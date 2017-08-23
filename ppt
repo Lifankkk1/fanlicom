@@ -1,0 +1,27 @@
+
+      $(document).ready(function(){
+       var slider = $(".slider-items");
+       var oneWidth = slider.find(".slider-item").eq(0).width();
+       var number = $(".slider-indexes").find("li");
+       var timer;
+       var i = 0;
+       number.on("click",function(){
+       	 $(this).addClass(".slider-index active").siblings(".slider-index").removeClass(".slider-index active");
+       	 i = $(this).index();
+       	 $(".slider-item").eq(i).addClass(".slider-item active").siblings(".slider-item").removeClass(".slider-item active");
+       });
+         timer = setInterval (function (){
+         	i++;
+         	if (i == number.length){i=0};
+         	number.eq(i).trigger("click");
+         },3000);
+         slider.click(function(){
+         	clearInterval(timer);
+         	timer = setInterval(function(){
+         		i++;
+          if (i == number.length){i=0};
+           number.eq(i).trigger("click");
+         	},3000)
+         })
+   })
+   
